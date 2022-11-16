@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -43,4 +44,16 @@ public class Enemy : MonoBehaviour
         transform.Rotate(0f, 180f, 0f);
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        var playerCollision = other.collider.GetComponent<Player>();
+        if (playerCollision)
+        {
+            Destroy(gameObject);
+            playerCollision.life -= 1;
+            if (playerCollision.life <= 0)
+                SceneManager.LoadScene("GameOver");
+        }
+
+    }
 }

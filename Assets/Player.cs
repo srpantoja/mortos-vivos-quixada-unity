@@ -35,7 +35,6 @@ public class Player : MonoBehaviour
         GetInputMovement();
         GetInputFire();
         LevelUp();
-        PlayerGameOver();
     }
 
     void FixedUpdate()
@@ -56,14 +55,6 @@ public class Player : MonoBehaviour
             nextLevel = (100 * level) * 1.5f;
             Debug.Log("nextLevel " + nextLevel);
         }
-    }
-    void PlayerGameOver()
-    {
-        if (life <= 0)
-        {
-            SceneManager.LoadScene("GameOver");
-        }
-
     }
 
     void GetInputMovement()
@@ -104,16 +95,7 @@ public class Player : MonoBehaviour
         rb.velocity = new Vector2(movement.x * speed, movement.y * speed);
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        var enemyCollision = other.collider.GetComponent<Enemy>();
-        if (enemyCollision)
-        {
-            Destroy(enemyCollision.gameObject);
-            life -= 1;
-        }
-
-    }
+    
 
 
 }
