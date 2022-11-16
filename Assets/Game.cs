@@ -8,8 +8,6 @@ public class Game : MonoBehaviour
     public Enemy enemy;
     public Player player;
     float count = 0;
-    void Awake() {
-    }
     void Start()
     {
         StartCoroutine(EnemyRespawn());

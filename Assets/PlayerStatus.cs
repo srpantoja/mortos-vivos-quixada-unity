@@ -12,14 +12,18 @@ public class PlayerStatus : MonoBehaviour
 
     void Update()
     {
-        string lifes = "";
-        for (int i = 0; i < player.life; i++)
+        if (player != null)
         {
-            lifes += " X";
+            string lifes = "";
+            for (int i = 0; i < player.life; i++)
+            {
+                lifes += " X";
+            }
+            life.text = "LIFE " + lifes;
+            score.text = "SCORE " + player.score.ToString();
+            level.text = "LEVEL " + player.level.ToString();
         }
-        life.text = "LIFE " + lifes;
-        score.text = "SCORE " + player.score.ToString();
-        level.text = "LEVEL " + player.level.ToString();
+
 
     }
 

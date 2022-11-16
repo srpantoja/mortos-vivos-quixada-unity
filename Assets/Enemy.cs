@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    Player player;
+    public Player player;
 
     public Transform playerTransform;
     public EnemyHealthBar healthBar;
     public float speed = 5f;
     public float maxLife = 3;
-    float life;
+    public float life;
     private float distance;
     private bool horizontalFacing = false;
 
@@ -41,16 +41,6 @@ public class Enemy : MonoBehaviour
     {
         horizontalFacing = !horizontalFacing;
         transform.Rotate(0f, 180f, 0f);
-    }
-
-    public void TakeHit(float damage)
-    {
-        life -= damage;
-        if (life <= 0)
-        {
-            player.IncrementScore();
-            Destroy(gameObject);
-        }
     }
 
 }

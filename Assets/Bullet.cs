@@ -6,12 +6,6 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 4.5f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -25,7 +19,12 @@ public class Bullet : MonoBehaviour
         var enemy = other.collider.GetComponent<Enemy>();
         if (enemy)
         {
-            enemy.TakeHit(1f);
+            enemy.life -= 1f;
+            if (enemy.life <= 0)
+            {
+                enemy.player.IncrementScore();
+                Destroy(gameObject);
+            }
         }
     }
 
